@@ -1,0 +1,43 @@
+.Card {
+  cursor: pointer;
+  background: #636e72;
+  border: 0;
+  width: 100px;
+  height: 100px;
+  font-size: 3em;
+  font-weight: bold;
+  color: #ffeaa7;
+  font-family: inherit;
+}
+
+.Card__face {
+  visibility: hidden;
+}
+
+.Card--active {
+  background: black;
+  color: white;
+}
+
+.Card--mismatch {
+  color: #d63031;
+}
+
+.Card--active .Card__face,
+.Card--found .Card__face {
+  visibility: visible;
+}
+
+.Card--found {
+  background: #00b894;
+  color: #fff;
+}
+
+.Card:disabled {
+  cursor: not-allowed;
+}
+
+.Card:not(:disabled):hover {
+  color: #636e72;
+  background: #b2bec3;
+}
