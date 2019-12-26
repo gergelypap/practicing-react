@@ -54,7 +54,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Form addTodo={this.addTodo} />
         <Filter active={this.state.filter} onChange={this.setFilter} />
         <List

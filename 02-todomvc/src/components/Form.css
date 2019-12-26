@@ -19,3 +19,9 @@
     background: black;
     color: white;
 }
+
+.form-submit:disabled {
+    background: #222;
+    cursor: not-allowed;
+    color: #555;
+}
