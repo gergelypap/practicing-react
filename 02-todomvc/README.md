@@ -11,3 +11,5 @@
 - Use a store (e.g. Redux)
 - Clean up the code, use function components
 - Use hooks <3  
+
+Time spent: 5 hrs
