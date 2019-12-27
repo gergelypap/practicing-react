@@ -6,10 +6,13 @@ import "./App.css";
 import FILTER from "./util/filters";
 
 export default class App extends React.Component {
-  state = {
-    todos: [],
-    filter: FILTER.ALL
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [],
+      filter: FILTER.ALL
+    };
+  }
 
   addTodo = title => {
     const nextId = this.state.todos.length + 1;
@@ -55,7 +58,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Form addTodo={this.addTodo} />
+        <Form onSubmit={this.addTodo} />
         <Filter active={this.state.filter} onChange={this.setFilter} />
         <List
           items={this.getFilteredTodos(this.state.filter)}
