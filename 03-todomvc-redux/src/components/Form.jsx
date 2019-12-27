@@ -1,7 +1,7 @@
 import React from "react";
 import "./Form.css";
 
-const Form = ({ value, onSubmit, onChange }) => (
+const Form = ({ value, submitDisabled, onSubmit, onChange }) => (
   <div>
     <form className="form" onSubmit={onSubmit}>
       <input

@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import {
   ACTION_ADD_TODO,
+  ACTION_INPUT_CHANGE,
   ACTION_SET_FILTER,
   ACTION_TOGGLE_TODO
 } from "../actions";
@@ -37,7 +38,15 @@ export const todoReducer = (state = [], action) => {
   }
 };
 
+export const inputReducer = (state = "", action) => {
+  if (action.type === ACTION_INPUT_CHANGE) {
+    return action.value;
+  }
+  return state;
+};
+
 export default combineReducers({
   filterReducer,
-  todoReducer
+  todoReducer,
+  inputReducer
 });
