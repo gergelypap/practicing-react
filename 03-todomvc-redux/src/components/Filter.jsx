@@ -1,20 +1,14 @@
 import React from "react";
 import FilterLink from "./FilterLink";
-import "./Filter.css";
 import { FILTER } from "../actions";
+import "./Filter.css";
 
-const Filter = ({ active }) => (
+const Filter = () => (
   <div className="filter">
     {"Filter: "}
-    <FilterLink active={active} type={FILTER.SHOW_ALL}>
-      all
-    </FilterLink>
-    <FilterLink active={active} type={FILTER.SHOW_COMPLETED}>
-      completed
-    </FilterLink>
-    <FilterLink active={active} type={FILTER.SHOW_PENDING}>
-      pending
-    </FilterLink>
+    <FilterLink type={FILTER.SHOW_ALL}>all</FilterLink>
+    <FilterLink type={FILTER.SHOW_COMPLETED}>completed</FilterLink>
+    <FilterLink type={FILTER.SHOW_PENDING}>pending</FilterLink>
   </div>
 );
 
