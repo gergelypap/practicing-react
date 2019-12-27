@@ -3,12 +3,12 @@ import Form from "./components/Form";
 import List from "./components/List";
 import Filter from "./components/Filter";
 import "./App.css";
-import FILTER from "./util/filters";
+import { FILTER } from "./actions";
 
 export default class App extends React.Component {
   state = {
     todos: [],
-    filter: FILTER.ALL
+    filter: FILTER.SHOW_ALL
   };
 
   constructor(props) {
@@ -44,11 +44,11 @@ export default class App extends React.Component {
   getFilteredTodos(filter) {
     const { todos } = this.state;
     switch (filter) {
-      case FILTER.COMPLETED:
+      case FILTER.SHOW_COMPLETED:
         return todos.filter(item => item.done);
-      case FILTER.PENDING:
+      case FILTER.SHOW_PENDING:
         return todos.filter(item => !item.done);
-      case FILTER.ALL:
+      case FILTER.SHOW_ALL:
       default:
         return todos;
     }

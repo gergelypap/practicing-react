@@ -1,6 +1,7 @@
 import React from "react";
+import store from "../store";
 
-const FilterLink = ({ active, type, handleClick, children }) => (
+const FilterLink = ({ active, type, children }) => (
   <a
     className={[
       "filter-link",
@@ -9,7 +10,9 @@ const FilterLink = ({ active, type, handleClick, children }) => (
     href={"/" + type}
     onClick={event => {
       event.preventDefault();
-      handleClick(type);
+      store.dispatch({
+        type: type
+      });
     }}
   >
     {children}
