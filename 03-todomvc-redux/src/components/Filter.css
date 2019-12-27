@@ -1,5 +1,19 @@
-.filter {
-    margin: 1em 0;
-    padding: 1em;
-    user-select: none;
+.filter-button {
+    color: gold;
+    font-weight: bold;
+    background: none;
+    border: 0;
+    font-size: 1em;
+    padding: .5em 1em;
+    text-transform: inherit;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    text-decoration: underline;
+}
+
+.filter-button--active {
+    color: inherit;
+    pointer-events: none;
 }

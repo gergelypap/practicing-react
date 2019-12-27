@@ -1,7 +1,7 @@
 import { setFilter } from "../actions";
 import { connect } from "react-redux";
-import "../components/Filter.css";
-import FilterButton from "../components/FilterButton";
+import "../components/Filters.css";
+import Filter from "../components/Filter";
 import { FILTER } from "../constants";
 
 const getCount = (todos, filter) => {
@@ -24,4 +24,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterButton);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
