@@ -15,7 +15,7 @@ const getFilteredTodos = (filter, todos) => {
 };
 
 const mapStateToProps = state => ({
-  todos: getFilteredTodos(state.filterReducer, state.todoReducer)
+  todos: getFilteredTodos(state.filter, state.todos)
 });
 
 const mapDispatchToProps = dispatch => ({

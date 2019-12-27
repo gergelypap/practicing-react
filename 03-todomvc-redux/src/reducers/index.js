@@ -15,7 +15,7 @@ export const filterReducer = (state = FILTER.SHOW_ALL, action) => {
   return state;
 };
 
-export const todoReducer = (state = [], action) => {
+export const todosReducer = (state = [], action) => {
   switch (action.type) {
     case ACTION_ADD_TODO:
       return [
@@ -46,7 +46,7 @@ export const inputReducer = (state = "", action) => {
 };
 
 export default combineReducers({
-  filterReducer,
-  todoReducer,
-  inputReducer
+  filter: filterReducer,
+  todos: todosReducer,
+  input: inputReducer
 });

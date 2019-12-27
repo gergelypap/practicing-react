@@ -2,20 +2,20 @@ import React from "react";
 import "./Form.css";
 import PropTypes from "prop-types";
 
-const Form = ({ value, onSubmit, onChange }) => (
+const Form = ({ input, onSubmit, onChange }) => (
   <div>
     <form className="form" onSubmit={onSubmit}>
       <input
         type="text"
         name="input"
-        value={value}
+        value={input}
         className="form-input"
         placeholder="Enter a task..."
         onChange={onChange}
         autoFocus={true}
         autoComplete="off"
       />
-      <button type="submit" className="form-submit" disabled={value === ""}>
+      <button type="submit" className="form-submit" disabled={input === ""}>
         Add
       </button>
     </form>
@@ -23,7 +23,7 @@ const Form = ({ value, onSubmit, onChange }) => (
 );
 
 Form.propTypes = {
-  value: PropTypes.string.isRequired,
+  input: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired
 };

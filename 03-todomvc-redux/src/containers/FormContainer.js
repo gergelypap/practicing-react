@@ -2,20 +2,19 @@ import { connect } from "react-redux";
 import { addTodo, changeInput } from "../actions";
 import Form from "../components/Form";
 
-const mapStateToProps = state => ({
-  value: state.inputReducer
-});
+const mapStateToProps = ({ input }) => ({ input });
 
 const mapDispatchToProps = dispatch => ({
   onSubmit(event) {
     event.preventDefault();
-    const inputValue = event.target.elements.input.value;
-    dispatch(addTodo(inputValue));
+    const input = event.target.elements.input.value;
+    dispatch(addTodo(input));
     dispatch(changeInput(""));
   },
   onChange(event) {
-    const inputValue = event.target.value;
-    dispatch(changeInput(inputValue));
+    const input = event.target.value;
+    dispatch(changeInput(input));
   }
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

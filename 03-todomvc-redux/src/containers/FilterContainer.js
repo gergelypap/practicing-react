@@ -15,8 +15,8 @@ const getCount = (todos, filter) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.filterReducer,
-  count: getCount(state.todoReducer, ownProps.filter)
+  active: ownProps.filter === state.filter,
+  count: getCount(state.todos, ownProps.filter)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
