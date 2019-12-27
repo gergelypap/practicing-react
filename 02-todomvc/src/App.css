@@ -4,6 +4,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgba(0, 0, 0, .8);
 }
 
 html, body {
@@ -11,8 +12,6 @@ html, body {
 }
 
 #root {
-  height: inherit;
-  background: rgba(0, 0, 0, .8);
   color: #ccc;
   display: flex;
   justify-content: center;
