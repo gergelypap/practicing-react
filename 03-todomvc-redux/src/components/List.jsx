@@ -3,13 +3,13 @@ import "./List.css";
 import { connect } from "react-redux";
 import { FILTER, toggleTodo } from "../actions";
 
-const List = ({ items, onClick }) => {
-  if (!items.length) {
+const List = ({ todos, onClick }) => {
+  if (!todos.length) {
     return <p>No tasks</p>;
   }
   return (
     <div className="list">
-      {items.map(item => (
+      {todos.map(item => (
         <span
           className={["list-item", item.done ? "list-item--done" : ""].join(
             " "
@@ -38,12 +38,11 @@ const getFilteredTodos = (filter, todos) => {
 
 const mapStateToProps = state => {
   return {
-    filter: state.filterReducer,
-    items: getFilteredTodos(state.filterReducer, state.todoReducer)
+    todos: getFilteredTodos(state.filterReducer, state.todoReducer)
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   onClick: id => {
     dispatch(toggleTodo(id));
   }

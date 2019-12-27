@@ -15,9 +15,7 @@ const FilterLink = ({ filter, type, onClick, children }) => (
   </a>
 );
 
-const mapStateToProps = state => ({
-  filter: state.filterReducer
-});
+const mapStateToProps = state => ({ filter: state.filterReducer });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick: event => {
