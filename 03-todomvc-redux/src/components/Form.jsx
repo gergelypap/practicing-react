@@ -10,7 +10,7 @@ const Form = ({ input, onSubmit, onChange }) => (
         name="input"
         value={input}
         className="form-input"
-        placeholder="Enter a task..."
+        placeholder={"What is your plan?"}
         onChange={onChange}
         autoFocus={true}
         autoComplete="off"

@@ -8,6 +8,7 @@
     border: 0;
     font-size: 1em;
     width: calc(100% - var(--button-width));
+    font-family: inherit;
 }
 
 .form-error {
@@ -26,6 +27,7 @@
     border: 0;
     background: black;
     color: white;
+    font-family: inherit;
 }
 
 .form-submit:disabled {

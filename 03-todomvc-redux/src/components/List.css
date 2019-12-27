@@ -1,6 +1,9 @@
 .list {
-    margin: 1em;
-    /*padding: 0 1em;*/
+    padding: 0 1em;
+}
+
+.list--empty {
+    font-style: italic;
 }
 
 .list-item {

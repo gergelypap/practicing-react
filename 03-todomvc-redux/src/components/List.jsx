@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const List = ({ todos, onClick }) => {
   if (!todos.length) {
-    return <p>No tasks</p>;
+    return <p className="list list--empty">No tasks</p>;
   }
   return (
     <div className="list">
