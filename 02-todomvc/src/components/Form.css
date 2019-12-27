@@ -10,6 +10,14 @@
     width: calc(100% - var(--button-width));
 }
 
+.form-error {
+    color: palevioletred;
+    font-size: 80%;
+    font-weight: bold;
+    padding: 1em;
+    display: block;
+}
+
 .form-submit {
     padding: 1em;
     width: var(--button-width);

@@ -63,7 +63,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Form onSubmit={this.addTodo} />
+        <Form todos={this.state.todos} onSubmit={this.addTodo} />
         <Filter active={this.state.filter} onChange={this.setFilter} />
         <List
           items={this.getFilteredTodos(this.state.filter)}

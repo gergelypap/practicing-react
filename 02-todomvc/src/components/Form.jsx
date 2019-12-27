@@ -3,7 +3,8 @@ import "./Form.css";
 
 export default class Form extends React.Component {
   state = {
-    inputValue: ""
+    inputValue: "",
+    error: null
   };
 
   constructor(props) {
@@ -16,11 +17,24 @@ export default class Form extends React.Component {
   onSubmit() {
     const { inputValue } = this.state;
     if (inputValue.length === 0) {
+      this.setState({ error: "You must enter a task!" });
+      return;
+    }
+    if (this.props.todos.filter(todo => todo.title === inputValue).length) {
+      this.setState({ error: "This task already exists!" });
+      this.setState({ inputValue: "" });
       return;
     }
     this.props.onSubmit(inputValue);
-    this.setState({ inputValue: "" });
+    this.setState({
+      inputValue: "",
+      error: null
+    });
     this.input.current.focus();
+  }
+
+  resetInputValue() {
+    this.setState({ inputValue: "" });
   }
 
   onInputChange(event) {
@@ -49,6 +63,11 @@ export default class Form extends React.Component {
           >
             Add
           </button>
+          {this.state.error ? (
+            <span className="form-error">{this.state.error}</span>
+          ) : (
+            ""
+          )}
         </form>
       </div>
     );
