@@ -1,12 +1,8 @@
 import React from "react";
 import "./Filter.css";
-import classNames from "classnames";
 
 const Filter = ({ count, active, onClick, children }) => (
-  <button
-    className={classNames("filter", { "filter--active": active })}
-    onClick={onClick}
-  >
+  <button className="filter" onClick={onClick} disabled={active}>
     {children} ({count})
   </button>
 );

@@ -9,11 +9,11 @@
     cursor: pointer;
 }
 
-.filter:hover {
+.filter:hover:not(:disabled) {
     text-decoration: underline;
 }
 
-.filter--active {
+.filter:disabled {
     color: inherit;
-    pointer-events: none;
+    cursor: default;
 }
