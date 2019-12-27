@@ -5,6 +5,7 @@ import {
   ACTION_TOGGLE_TODO
 } from "../actions";
 import { FILTER } from "../constants";
+import { v4 as uuid } from "node-uuid";
 
 export const filterReducer = (state = FILTER.SHOW_ALL, action) => {
   if (action.type === ACTION_SET_FILTER && action.filter in FILTER) {
@@ -19,7 +20,7 @@ export const todoReducer = (state = [], action) => {
       return [
         ...state,
         {
-          id: state.length + 1,
+          id: uuid(),
           text: action.text,
           done: false
         }
