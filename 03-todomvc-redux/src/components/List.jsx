@@ -1,5 +1,6 @@
 import React from "react";
 import "./List.css";
+import classNames from "classnames";
 
 const List = ({ todos, onClick }) => {
   if (!todos.length) {
@@ -9,9 +10,7 @@ const List = ({ todos, onClick }) => {
     <div className="list">
       {todos.map(item => (
         <span
-          className={["list-item", item.done ? "list-item--done" : ""].join(
-            " "
-          )}
+          className={classNames("list-item", { "list-item--done": item.done })}
           key={item.id}
           onClick={() => onClick(item.id)}
         >
