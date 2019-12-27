@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import {
   ACTION_ADD_TODO,
+  ACTION_CLEAR_TODOS,
   ACTION_INPUT_CHANGE,
   ACTION_SET_FILTER,
   ACTION_TOGGLE_TODO
@@ -33,6 +34,8 @@ export const todosReducer = (state = [], action) => {
         }
         return todo;
       });
+    case ACTION_CLEAR_TODOS:
+      return [];
     default:
       return state;
   }

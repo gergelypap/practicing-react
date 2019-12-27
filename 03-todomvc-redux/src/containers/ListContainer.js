@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { toggleTodo } from "../actions";
+import { clearTodos, toggleTodo } from "../actions";
 import { FILTER } from "../constants";
 import List from "../components/List";
 
@@ -21,6 +21,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onClick(id) {
     dispatch(toggleTodo(id));
+  },
+  onClearAll() {
+    dispatch(clearTodos());
   }
 });
 
