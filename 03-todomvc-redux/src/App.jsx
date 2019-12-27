@@ -1,14 +1,14 @@
 import React from "react";
-import Form from "./components/Form";
-import List from "./components/List";
+import FormContainer from "./containers/FormContainer";
 import Filter from "./components/Filter";
+import ListContainer from "./containers/ListContainer";
 import "./App.css";
 
 const App = () => (
   <div className="app">
-    <Form />
+    <FormContainer />
     <Filter />
-    <List />
+    <ListContainer />
   </div>
 );
 

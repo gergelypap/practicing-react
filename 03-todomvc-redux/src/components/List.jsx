@@ -1,7 +1,5 @@
 import React from "react";
 import "./List.css";
-import { connect } from "react-redux";
-import { FILTER, toggleTodo } from "../actions";
 
 const List = ({ todos, onClick }) => {
   if (!todos.length) {
@@ -24,28 +22,4 @@ const List = ({ todos, onClick }) => {
   );
 };
 
-const getFilteredTodos = (filter, todos) => {
-  switch (filter) {
-    case FILTER.SHOW_COMPLETED:
-      return todos.filter(item => item.done);
-    case FILTER.SHOW_PENDING:
-      return todos.filter(item => !item.done);
-    case FILTER.SHOW_ALL:
-    default:
-      return todos;
-  }
-};
-
-const mapStateToProps = state => {
-  return {
-    todos: getFilteredTodos(state.filterReducer, state.todoReducer)
-  };
-};
-
-const mapDispatchToProps = dispatch => ({
-  onClick: id => {
-    dispatch(toggleTodo(id));
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default List;

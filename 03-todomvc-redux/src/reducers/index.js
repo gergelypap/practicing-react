@@ -2,9 +2,9 @@ import { combineReducers } from "redux";
 import {
   ACTION_ADD_TODO,
   ACTION_SET_FILTER,
-  ACTION_TOGGLE_TODO,
-  FILTER
+  ACTION_TOGGLE_TODO
 } from "../actions";
+import { FILTER } from "../constants";
 
 export const filterReducer = (state = FILTER.SHOW_ALL, action) => {
   if (action.type === ACTION_SET_FILTER && action.filter in FILTER) {

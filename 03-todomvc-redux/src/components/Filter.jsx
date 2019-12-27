@@ -1,7 +1,7 @@
+import { FILTER } from "../constants";
 import React from "react";
-import FilterLink from "./FilterLink";
-import { FILTER } from "../actions";
 import "./Filter.css";
+import FilterLink from "../containers/FilterLink";
 
 const Filter = () => (
   <div className="filter">
