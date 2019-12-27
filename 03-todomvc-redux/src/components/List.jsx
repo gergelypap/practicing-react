@@ -1,5 +1,6 @@
 import React from "react";
 import "./List.css";
+import PropTypes from "prop-types";
 
 const List = ({ todos, onClick }) => {
   if (!todos.length) {
@@ -18,6 +19,17 @@ const List = ({ todos, onClick }) => {
       ))}
     </div>
   );
+};
+
+List.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      text: PropTypes.string,
+      done: PropTypes.bool
+    })
+  ),
+  onClick: PropTypes.func.isRequired
 };
 
 export default List;
