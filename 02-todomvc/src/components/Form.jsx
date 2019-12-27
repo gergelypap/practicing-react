@@ -9,9 +9,11 @@ export default class Form extends React.Component {
   constructor(props) {
     super(props);
     this.input = React.createRef();
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onSubmit = () => {
+  onSubmit() {
     const { inputValue } = this.state;
     if (inputValue.length === 0) {
       return;
@@ -19,7 +21,7 @@ export default class Form extends React.Component {
     this.props.onSubmit(inputValue);
     this.setState({ inputValue: "" });
     this.focusInput();
-  };
+  }
 
   componentDidMount() {
     this.focusInput();
@@ -29,11 +31,11 @@ export default class Form extends React.Component {
     this.input.current.focus();
   }
 
-  onInputChange = event => {
+  onInputChange(event) {
     this.setState({
       inputValue: event.target.value
     });
-  };
+  }
 
   render() {
     return (

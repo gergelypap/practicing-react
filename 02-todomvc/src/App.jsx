@@ -6,15 +6,20 @@ import "./App.css";
 import FILTER from "./util/filters";
 
 export default class App extends React.Component {
+  state = {
+    todos: [],
+    filter: FILTER.ALL
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-      todos: [],
-      filter: FILTER.ALL
-    };
+    this.addTodo = this.addTodo.bind(this);
+    this.toggleTodo = this.toggleTodo.bind(this);
+    this.getFilteredTodos = this.getFilteredTodos.bind(this);
+    this.setFilter = this.setFilter.bind(this);
   }
 
-  addTodo = title => {
+  addTodo(title) {
     const nextId = this.state.todos.length + 1;
     this.setState({
       todos: this.state.todos.concat({
@@ -23,9 +28,9 @@ export default class App extends React.Component {
         done: false
       })
     });
-  };
+  }
 
-  toggleTodo = todo => {
+  toggleTodo(todo) {
     this.setState({
       todos: this.state.todos.map(item => {
         if (item.id === todo.id) {
@@ -34,9 +39,9 @@ export default class App extends React.Component {
         return item;
       })
     });
-  };
+  }
 
-  getFilteredTodos = filter => {
+  getFilteredTodos(filter) {
     const { todos } = this.state;
     switch (filter) {
       case FILTER.COMPLETED:
@@ -47,13 +52,13 @@ export default class App extends React.Component {
       default:
         return todos;
     }
-  };
+  }
 
-  setFilter = filter => {
+  setFilter(filter) {
     this.setState({
       filter
     });
-  };
+  }
 
   render() {
     return (
