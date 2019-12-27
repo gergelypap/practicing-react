@@ -20,14 +20,6 @@ export default class Form extends React.Component {
     }
     this.props.onSubmit(inputValue);
     this.setState({ inputValue: "" });
-    this.focusInput();
-  }
-
-  componentDidMount() {
-    this.focusInput();
-  }
-
-  focusInput() {
     this.input.current.focus();
   }
 
@@ -48,6 +40,7 @@ export default class Form extends React.Component {
             className="form-input"
             placeholder="Enter a task..."
             onChange={this.onInputChange}
+            autoFocus={true}
           />
           <button
             type="submit"
