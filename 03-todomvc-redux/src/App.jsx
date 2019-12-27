@@ -4,11 +4,11 @@ import List from "./components/List";
 import Filter from "./components/Filter";
 import "./App.css";
 import { FILTER } from "./actions";
+import { connect } from "react-redux";
 
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
-    todos: [],
-    filter: FILTER.SHOW_ALL
+    todos: []
   };
 
   constructor(props) {
@@ -64,12 +64,20 @@ export default class App extends React.Component {
     return (
       <div className="app">
         <Form todos={this.state.todos} onSubmit={this.addTodo} />
-        <Filter active={this.state.filter} onChange={this.setFilter} />
+        <Filter active={this.props.filter} onChange={this.setFilter} />
         <List
-          items={this.getFilteredTodos(this.state.filter)}
+          items={this.getFilteredTodos(this.props.filter)}
           onTodoClick={this.toggleTodo}
         />
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    filter: state.filterReducer
+  };
+};
+
+export default connect(mapStateToProps)(App);
