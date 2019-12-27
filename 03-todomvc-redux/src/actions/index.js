@@ -2,7 +2,8 @@ export const ACTION_SET_FILTER = "ACTION_SET_FILTER";
 export const ACTION_ADD_TODO = "ACTION_ADD_TODO";
 export const ACTION_TOGGLE_TODO = "ACTION_TOGGLE_TODO";
 export const ACTION_INPUT_CHANGE = "ACTION_INPUT_CHANGE";
-export const ACTION_CLEAR_TODOS = "ACTION_CLEAR_TODOS";
+export const ACTION_CLEAR_ALL = "ACTION_CLEAR_ALL";
+export const ACTION_COMPLETE_ALL = "ACTION_COMPLETE_ALL";
 
 export const setFilter = filter => ({
   type: ACTION_SET_FILTER,
@@ -20,7 +21,11 @@ export const toggleTodo = id => ({
 });
 
 export const clearTodos = () => ({
-  type: ACTION_CLEAR_TODOS
+  type: ACTION_CLEAR_ALL
+});
+
+export const completeTodos = () => ({
+  type: ACTION_COMPLETE_ALL
 });
 
 export const changeInput = value => ({

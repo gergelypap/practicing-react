@@ -3,7 +3,7 @@ import "./List.css";
 import PropTypes from "prop-types";
 import ListItem from "./ListItem";
 
-const List = ({ todos, onClick, onClearAll }) => {
+const List = ({ todos, onClick, onClearAll, onCompleteAll }) => {
   if (!todos.length) {
     return <div className="list list--empty">No tasks</div>;
   }
@@ -14,6 +14,9 @@ const List = ({ todos, onClick, onClearAll }) => {
       ))}
       <button className="list-button" onClick={onClearAll}>
         Clear all
+      </button>
+      <button className="list-button" onClick={onCompleteAll}>
+        Complete all
       </button>
     </div>
   );
@@ -28,7 +31,8 @@ List.propTypes = {
     })
   ),
   onClick: PropTypes.func.isRequired,
-  onClearAll: PropTypes.func.isRequired
+  onClearAll: PropTypes.func.isRequired,
+  onCompleteAll: PropTypes.func.isRequired
 };
 
 export default List;

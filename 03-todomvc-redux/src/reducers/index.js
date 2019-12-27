@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 import {
   ACTION_ADD_TODO,
-  ACTION_CLEAR_TODOS,
+  ACTION_CLEAR_ALL,
+  ACTION_COMPLETE_ALL,
   ACTION_INPUT_CHANGE,
   ACTION_SET_FILTER,
   ACTION_TOGGLE_TODO
@@ -34,8 +35,13 @@ export const todosReducer = (state = [], action) => {
         }
         return todo;
       });
-    case ACTION_CLEAR_TODOS:
+    case ACTION_CLEAR_ALL:
       return [];
+    case ACTION_COMPLETE_ALL:
+      return state.map(todo => {
+        todo.done = true;
+        return todo;
+      });
     default:
       return state;
   }

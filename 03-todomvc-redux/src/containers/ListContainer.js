@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { clearTodos, toggleTodo } from "../actions";
+import { clearTodos, completeTodos, toggleTodo } from "../actions";
 import { FILTER } from "../constants";
 import List from "../components/List";
 
@@ -24,6 +24,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onClearAll() {
     dispatch(clearTodos());
+  },
+  onCompleteAll() {
+    dispatch(completeTodos());
   }
 });
 
