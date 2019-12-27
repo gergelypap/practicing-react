@@ -1,6 +1,7 @@
 import React from "react";
 import "./List.css";
 import { connect } from "react-redux";
+import { toggleTodo } from "../actions";
 
 const List = ({ items, onClick }) => {
   if (!items.length) {
@@ -14,7 +15,7 @@ const List = ({ items, onClick }) => {
             " "
           )}
           key={item.id}
-          // onClick={onClick(item)}
+          onClick={() => onClick(item.id)}
         >
           {item.text}
         </span>
@@ -30,9 +31,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  // onClick: text => {
-  //   dispatch(addTodo(text));
-  // }
+  onClick: id => {
+    dispatch(toggleTodo(id));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);
