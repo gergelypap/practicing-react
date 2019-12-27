@@ -1,0 +1,35 @@
+:root {
+    --button-width: 100px;
+}
+
+.form-input {
+    padding: 1em;
+    border-radius: 2em 0 0 2em;
+    border: 0;
+    font-size: 1em;
+    width: calc(100% - var(--button-width));
+}
+
+.form-error {
+    color: palevioletred;
+    font-size: 80%;
+    font-weight: bold;
+    padding: 1em;
+    display: block;
+}
+
+.form-submit {
+    padding: 1em;
+    width: var(--button-width);
+    border-radius: 0 2em 2em 0;
+    font-size: 1em;
+    border: 0;
+    background: black;
+    color: white;
+}
+
+.form-submit:disabled {
+    background: #222;
+    cursor: not-allowed;
+    color: #555;
+}

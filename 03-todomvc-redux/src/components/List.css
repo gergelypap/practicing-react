@@ -1,0 +1,20 @@
+.list {
+    margin: 1em;
+    /*padding: 0 1em;*/
+}
+
+.list-item {
+    display: block;
+    cursor: pointer;
+    padding: 1em 0;
+    border-bottom: 2px solid #585858;
+}
+
+.list-item--done {
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.list-item:hover {
+    color: mediumpurple;
+}
