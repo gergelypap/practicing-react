@@ -1,7 +1,8 @@
 import React from "react";
 import "./List.css";
+import { connect } from "react-redux";
 
-const List = ({ items, onTodoClick }) => {
+const List = ({ items, onClick }) => {
   if (!items.length) {
     return <p>No tasks</p>;
   }
@@ -13,13 +14,25 @@ const List = ({ items, onTodoClick }) => {
             " "
           )}
           key={item.id}
-          onClick={() => onTodoClick(item)}
+          // onClick={onClick(item)}
         >
-          {item.title}
+          {item.text}
         </span>
       ))}
     </div>
   );
 };
 
-export default List;
+const mapStateToProps = state => {
+  return {
+    items: state.todoReducer
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  // onClick: text => {
+  //   dispatch(addTodo(text));
+  // }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

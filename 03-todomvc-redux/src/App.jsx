@@ -7,10 +7,6 @@ import { FILTER } from "./actions";
 import { connect } from "react-redux";
 
 class App extends React.Component {
-  state = {
-    todos: []
-  };
-
   constructor(props) {
     super(props);
     this.addTodo = this.addTodo.bind(this);
@@ -20,9 +16,9 @@ class App extends React.Component {
   }
 
   addTodo(title) {
-    const nextId = this.state.todos.length + 1;
+    const nextId = this.props.todos.length + 1;
     this.setState({
-      todos: this.state.todos.concat({
+      todos: this.props.todos.concat({
         id: nextId,
         title,
         done: false
@@ -32,7 +28,7 @@ class App extends React.Component {
 
   toggleTodo(todo) {
     this.setState({
-      todos: this.state.todos.map(item => {
+      todos: this.props.todos.map(item => {
         if (item.id === todo.id) {
           item.done = !item.done;
         }
@@ -42,7 +38,7 @@ class App extends React.Component {
   }
 
   getFilteredTodos(filter) {
-    const { todos } = this.state;
+    const { todos } = this.props;
     switch (filter) {
       case FILTER.SHOW_COMPLETED:
         return todos.filter(item => item.done);
@@ -63,7 +59,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Form todos={this.state.todos} onSubmit={this.addTodo} />
+        <Form todos={this.props.todos} onSubmit={this.addTodo} />
         <Filter active={this.props.filter} onChange={this.setFilter} />
         <List
           items={this.getFilteredTodos(this.props.filter)}
@@ -74,10 +70,9 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    filter: state.filterReducer
-  };
-};
+const mapStateToProps = state => ({
+  filter: state.filterReducer,
+  todos: state.todoReducer
+});
 
 export default connect(mapStateToProps)(App);
