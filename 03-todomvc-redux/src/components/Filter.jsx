@@ -1,14 +1,18 @@
 import { FILTER } from "../constants";
 import React from "react";
 import "./Filter.css";
-import FilterLink from "../containers/FilterLink";
+import FilterButtonContainer from "../containers/FilterButtonContainer";
 
 const Filter = () => (
   <div className="filter">
     {"Filter: "}
-    <FilterLink type={FILTER.SHOW_ALL}>all</FilterLink>
-    <FilterLink type={FILTER.SHOW_COMPLETED}>completed</FilterLink>
-    <FilterLink type={FILTER.SHOW_PENDING}>pending</FilterLink>
+    <FilterButtonContainer type={FILTER.SHOW_ALL}>all</FilterButtonContainer>
+    <FilterButtonContainer type={FILTER.SHOW_COMPLETED}>
+      completed
+    </FilterButtonContainer>
+    <FilterButtonContainer type={FILTER.SHOW_PENDING}>
+      pending
+    </FilterButtonContainer>
   </div>
 );
 

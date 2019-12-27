@@ -1,7 +1,7 @@
 import { setFilter } from "../actions";
 import { connect } from "react-redux";
 import "../components/Filter.css";
-import Link from "../components/Link";
+import FilterButton from "../components/FilterButton";
 
 const mapStateToProps = ({ filterReducer }, { type }) => ({
   active: type === filterReducer
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Link);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterButton);

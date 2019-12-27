@@ -1,20 +1,5 @@
 .filter {
     margin: 1em 0;
-    text-transform: uppercase;
     padding: 1em;
-    font-size: .9em;
     user-select: none;
-    font-weight: bold;
-}
-
-.filter-link {
-    color: gold;
-    margin: 0 .5em;
-    font-weight: normal;
-}
-
-.filter-link--active {
-    text-decoration: none;
-    color: inherit;
-    pointer-events: none;
 }
