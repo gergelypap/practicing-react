@@ -1,4 +1,4 @@
-.filter-button {
+.filter {
     color: gold;
     font-weight: bold;
     background: none;
@@ -9,11 +9,11 @@
     cursor: pointer;
 }
 
-.filter-button:hover {
+.filter:hover {
     text-decoration: underline;
 }
 
-.filter-button--active {
+.filter--active {
     color: inherit;
     pointer-events: none;
 }

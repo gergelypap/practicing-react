@@ -18,7 +18,7 @@ export const toggleTodo = id => ({
   id
 });
 
-export const inputChange = value => ({
+export const changeInput = value => ({
   type: ACTION_INPUT_CHANGE,
   value
 });

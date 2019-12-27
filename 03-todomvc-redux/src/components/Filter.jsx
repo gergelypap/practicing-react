@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 const Filter = ({ count, active, onClick, children }) => (
   <button
-    className={classNames("filter-button", { "filter-button--active": active })}
+    className={classNames("filter", { "filter--active": active })}
     onClick={onClick}
   >
     {children} ({count})

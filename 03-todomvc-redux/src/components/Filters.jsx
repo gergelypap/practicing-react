@@ -4,7 +4,7 @@ import "./Filters.css";
 import FilterContainer from "../containers/FilterContainer";
 
 const Filters = () => (
-  <div className="filter">
+  <div className="filters">
     {"Filters: "}
     <FilterContainer filter={FILTER.SHOW_ALL}>all</FilterContainer>
     <FilterContainer filter={FILTER.SHOW_COMPLETED}>completed</FilterContainer>

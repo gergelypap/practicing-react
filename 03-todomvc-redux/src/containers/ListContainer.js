@@ -14,14 +14,12 @@ const getFilteredTodos = (filter, todos) => {
   }
 };
 
-const mapStateToProps = state => {
-  return {
-    todos: getFilteredTodos(state.filterReducer, state.todoReducer)
-  };
-};
+const mapStateToProps = state => ({
+  todos: getFilteredTodos(state.filterReducer, state.todoReducer)
+});
 
 const mapDispatchToProps = dispatch => ({
-  onClick: id => {
+  onClick(id) {
     dispatch(toggleTodo(id));
   }
 });
