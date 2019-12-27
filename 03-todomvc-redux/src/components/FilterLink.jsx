@@ -2,11 +2,11 @@ import React from "react";
 import { setFilter } from "../actions";
 import { connect } from "react-redux";
 
-const FilterLink = ({ active, type, onClick, children }) => (
+const FilterLink = ({ filter, type, onClick, children }) => (
   <a
     className={[
       "filter-link",
-      active === type ? "filter-link--active" : ""
+      filter === type ? "filter-link--active" : ""
     ].join(" ")}
     href={"/" + type}
     onClick={onClick}
@@ -16,7 +16,7 @@ const FilterLink = ({ active, type, onClick, children }) => (
 );
 
 const mapStateToProps = state => ({
-  active: state.filterReducer
+  filter: state.filterReducer
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
