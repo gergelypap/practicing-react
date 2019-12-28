@@ -28,7 +28,7 @@ const actions = (dispatch, ownProps) => ({
 const FilterContainer = connect(state, actions)(Filter);
 
 FilterContainer.propTypes = {
-  filter: PropTypes.string.isRequired
+  filter: PropTypes.oneOf(Object.keys(FILTER))
 };
 
 export default FilterContainer;
