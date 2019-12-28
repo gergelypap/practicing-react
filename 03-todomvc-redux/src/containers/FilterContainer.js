@@ -1,4 +1,4 @@
-import { setFilter } from "../actions";
+import { setFilter } from "../actions/filterActions";
 import { connect } from "react-redux";
 import "../components/Filters.css";
 import Filter from "../components/Filter";

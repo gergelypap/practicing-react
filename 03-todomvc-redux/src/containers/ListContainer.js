@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { clearTodos, completeTodos, toggleTodo } from "../actions";
+import { clearTodos, completeTodos, toggleTodo } from "../actions/todoActions";
 import { FILTER } from "../constants";
 import List from "../components/List";
 

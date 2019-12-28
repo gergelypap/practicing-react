@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import { addTodo, changeInput, setFormError } from "../actions";
+import { changeInput, setFormError } from "../actions/formActions";
+import { addTodo } from "../actions/todoActions";
 import Form from "../components/Form";
 
 const state = ({ form }) => ({ form });
