@@ -14,18 +14,18 @@ const getCount = (todos, filter) => {
   ).length;
 };
 
-const mapStateToProps = (state, ownProps) => ({
+const state = (state, ownProps) => ({
   active: ownProps.filter === state.filter,
   count: getCount(state.todos, ownProps.filter)
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const actions = (dispatch, ownProps) => ({
   onClick: () => {
     dispatch(setFilter(ownProps.filter));
   }
 });
 
-const FilterContainer = connect(mapStateToProps, mapDispatchToProps)(Filter);
+const FilterContainer = connect(state, actions)(Filter);
 
 FilterContainer.propTypes = {
   filter: PropTypes.string.isRequired

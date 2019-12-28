@@ -3,19 +3,19 @@ import "./List.css";
 import PropTypes from "prop-types";
 import ListItem from "./ListItem";
 
-const List = ({ todos, onClick, onClearAll, onCompleteAll }) => {
+const List = ({ todos, toggleTodo, clearTodos, completeTodos }) => {
   if (!todos.length) {
     return <div className="list list--empty">No tasks</div>;
   }
   return (
     <div className="list">
       {todos.map(item => (
-        <ListItem key={item.id} item={item} onClick={onClick} />
+        <ListItem key={item.id} item={item} onClick={toggleTodo} />
       ))}
-      <button className="list-button" onClick={onClearAll}>
+      <button className="list-button" onClick={clearTodos}>
         Clear all
       </button>
-      <button className="list-button" onClick={onCompleteAll}>
+      <button className="list-button" onClick={completeTodos}>
         Complete all
       </button>
     </div>
@@ -30,9 +30,9 @@ List.propTypes = {
       done: PropTypes.bool
     })
   ),
-  onClick: PropTypes.func.isRequired,
-  onClearAll: PropTypes.func.isRequired,
-  onCompleteAll: PropTypes.func.isRequired
+  toggleTodo: PropTypes.func.isRequired,
+  clearTodos: PropTypes.func.isRequired,
+  completeTodos: PropTypes.func.isRequired
 };
 
 export default List;

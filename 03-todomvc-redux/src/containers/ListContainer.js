@@ -14,20 +14,14 @@ const getFilteredTodos = (filter, todos) => {
   }
 };
 
-const mapStateToProps = state => ({
+const state = state => ({
   todos: getFilteredTodos(state.filter, state.todos)
 });
 
-const mapDispatchToProps = dispatch => ({
-  onClick(id) {
-    dispatch(toggleTodo(id));
-  },
-  onClearAll() {
-    dispatch(clearTodos());
-  },
-  onCompleteAll() {
-    dispatch(completeTodos());
-  }
-});
+const actions = {
+  toggleTodo,
+  clearTodos,
+  completeTodos
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default connect(state, actions)(List);

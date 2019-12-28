@@ -2,9 +2,9 @@ import { connect } from "react-redux";
 import { addTodo, changeInput, setFormError } from "../actions";
 import Form from "../components/Form";
 
-const mapStateToProps = ({ form }) => ({ form });
+const state = ({ form }) => ({ form });
 
-const mapDispatchToProps = dispatch => ({
+const actions = dispatch => ({
   onSubmit(event) {
     event.preventDefault();
     const input = event.target.elements.input.value;
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default connect(state, actions)(Form);
