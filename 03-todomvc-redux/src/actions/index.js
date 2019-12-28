@@ -4,6 +4,7 @@ export const ACTION_TOGGLE_TODO = "ACTION_TOGGLE_TODO";
 export const ACTION_INPUT_CHANGE = "ACTION_INPUT_CHANGE";
 export const ACTION_CLEAR_ALL = "ACTION_CLEAR_ALL";
 export const ACTION_COMPLETE_ALL = "ACTION_COMPLETE_ALL";
+export const ACTION_SET_FORM_ERROR = "ACTION_SET_FORM_ERROR";
 
 export const setFilter = filter => ({
   type: ACTION_SET_FILTER,
@@ -28,7 +29,13 @@ export const completeTodos = () => ({
   type: ACTION_COMPLETE_ALL
 });
 
-export const changeInput = value => ({
+export const changeInput = input => ({
   type: ACTION_INPUT_CHANGE,
-  value
+  input
+});
+
+export const setFormError = (input, message) => ({
+  type: ACTION_SET_FORM_ERROR,
+  input,
+  message
 });

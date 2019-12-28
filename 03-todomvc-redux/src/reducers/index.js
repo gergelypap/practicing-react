@@ -5,6 +5,7 @@ import {
   ACTION_COMPLETE_ALL,
   ACTION_INPUT_CHANGE,
   ACTION_SET_FILTER,
+  ACTION_SET_FORM_ERROR,
   ACTION_TOGGLE_TODO
 } from "../actions";
 import { FILTER } from "../constants";
@@ -17,17 +18,22 @@ export const filterReducer = (state = FILTER.SHOW_ALL, action) => {
   return state;
 };
 
+const addTodo = (todos, action) => {
+  if (todos.find(item => item.text === action.text) !== undefined) {
+    throw new Error("You already added this!");
+  }
+  const newTodo = {
+    id: uuid(),
+    text: action.text,
+    done: false
+  };
+  return [...todos, newTodo];
+};
+
 export const todosReducer = (state = [], action) => {
   switch (action.type) {
     case ACTION_ADD_TODO:
-      return [
-        ...state,
-        {
-          id: uuid(),
-          text: action.text,
-          done: false
-        }
-      ];
+      return addTodo(state, action);
     case ACTION_TOGGLE_TODO:
       return state.map(todo => {
         if (todo.id === action.id) {
@@ -47,9 +53,18 @@ export const todosReducer = (state = [], action) => {
   }
 };
 
-export const inputReducer = (state = "", action) => {
+export const formReducer = (
+  state = {
+    input: "",
+    error: null
+  },
+  action
+) => {
   if (action.type === ACTION_INPUT_CHANGE) {
-    return action.value;
+    return { input: action.input, error: null };
+  }
+  if (action.type === ACTION_SET_FORM_ERROR) {
+    return { input: action.input, error: action.message };
   }
   return state;
 };
@@ -57,5 +72,5 @@ export const inputReducer = (state = "", action) => {
 export default combineReducers({
   filter: filterReducer,
   todos: todosReducer,
-  input: inputReducer
+  form: formReducer
 });

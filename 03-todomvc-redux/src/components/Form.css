@@ -1,5 +1,14 @@
 :root {
     --button-width: 100px;
+    --error-color: tomato;
+}
+
+.form {
+    position: relative;
+}
+
+.form--has-error .form-input {
+    color: var(--error-color);
 }
 
 .form-input {
@@ -12,11 +21,19 @@
 }
 
 .form-error {
-    color: palevioletred;
+    --height: 2em;
+    background: var(--error-color);
     font-size: 80%;
     font-weight: bold;
-    padding: 1em;
     display: block;
+    position: absolute;
+    height: var(--height);
+    bottom: calc(-1 * var(--height) - .5em);
+    line-height: var(--height);
+    padding: 0 var(--height);
+    border-radius: 2em;
+    color: black;
+    user-select: none;
 }
 
 .form-submit {
