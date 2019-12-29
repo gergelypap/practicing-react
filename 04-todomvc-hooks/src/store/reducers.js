@@ -1,15 +1,15 @@
 import {
   ACTION_INPUT_CHANGE,
   ACTION_SET_FORM_ERROR
-} from "../actions/formActions";
+} from "./actions/formActions";
 import {
   ACTION_ADD_TODO,
   ACTION_CLEAR_ALL,
   ACTION_COMPLETE_ALL,
   ACTION_TOGGLE_TODO
-} from "../actions/todoActions";
+} from "./actions/todoActions";
 import { v4 as uuid } from "node-uuid";
-import { ACTION_SET_FILTER } from "../actions/filterActions";
+import { ACTION_SET_FILTER } from "./actions/filterActions";
 
 function addTodo(todos, text) {
   const newTodo = {

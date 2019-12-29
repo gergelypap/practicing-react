@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./Filter.css";
 import Context from "../store/context";
-import { setFilter } from "../actions/filterActions";
+import { setFilter } from "../store/actions/filterActions";
 import { FILTER } from "../constants";
 
 function getCount(todos, filter) {

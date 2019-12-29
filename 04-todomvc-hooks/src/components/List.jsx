@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
 import "./List.css";
 import ListItem from "./ListItem";
-import { clearTodos, completeTodos, toggleTodo } from "../actions/todoActions";
+import {
+  clearTodos,
+  completeTodos,
+  toggleTodo
+} from "../store/actions/todoActions";
 import Context from "../store/context";
 import { FILTER } from "../constants";
 

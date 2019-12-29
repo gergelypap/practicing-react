@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import "./Form.css";
-import { addTodo } from "../actions/todoActions";
+import { addTodo } from "../store/actions/todoActions";
 import Context from "../store/context";
-import { changeInput, setFormError } from "../actions/formActions";
+import { changeInput, setFormError } from "../store/actions/formActions";
 
 export default function() {
   const [state, dispatch] = useContext(Context);
