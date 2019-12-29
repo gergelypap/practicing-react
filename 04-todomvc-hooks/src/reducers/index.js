@@ -2,7 +2,12 @@ import {
   ACTION_INPUT_CHANGE,
   ACTION_SET_FORM_ERROR
 } from "../actions/formActions";
-import { ACTION_ADD_TODO, ACTION_TOGGLE_TODO } from "../actions/todoActions";
+import {
+  ACTION_ADD_TODO,
+  ACTION_CLEAR_ALL,
+  ACTION_COMPLETE_ALL,
+  ACTION_TOGGLE_TODO
+} from "../actions/todoActions";
 import { v4 as uuid } from "node-uuid";
 
 function addTodo(todos, text) {
@@ -19,6 +24,13 @@ function toggleTodo(todos, id) {
     if (todo.id === id) {
       todo.done = !todo.done;
     }
+    return todo;
+  });
+}
+
+function completeTodos(todos) {
+  return todos.map(todo => {
+    todo.done = true;
     return todo;
   });
 }
@@ -44,6 +56,16 @@ export default function(state, action) {
       return {
         ...state,
         todos: toggleTodo(state.todos, action.id)
+      };
+    case ACTION_COMPLETE_ALL:
+      return {
+        ...state,
+        todos: completeTodos(state.todos)
+      };
+    case ACTION_CLEAR_ALL:
+      return {
+        ...state,
+        todos: []
       };
     default:
       return state;
