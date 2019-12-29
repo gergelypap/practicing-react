@@ -1,30 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Filter.css";
-import Context from "../store/context";
-import { setFilter } from "../store/actions/filterActions";
-import { FILTER } from "../constants";
 
-function getCount(todos, filter) {
-  if (filter === FILTER.SHOW_ALL) {
-    return todos.length;
-  }
-  return todos.filter(todo =>
-    filter === FILTER.SHOW_COMPLETED ? todo.done : !todo.done
-  ).length;
-}
-
-export default ({ filter, children }) => {
-  const [state, dispatch] = useContext(Context);
-  const active = state.filter === filter;
-  const count = getCount(state.todos, filter);
-
+export default function({ active, count, children, onClick }) {
   return (
-    <button
-      className="filter"
-      onClick={() => dispatch(setFilter(filter))}
-      disabled={active}
-    >
+    <button className="filter" onClick={onClick} disabled={active}>
       {children} ({count})
     </button>
   );
-};
+}

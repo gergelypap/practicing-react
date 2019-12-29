@@ -1,35 +1,19 @@
-import React, { useContext } from "react";
-import "./List.css";
-import ListItem from "./ListItem";
 import {
   clearTodos,
   completeTodos,
   toggleTodo
 } from "../store/actions/todoActions";
-import Context from "../store/context";
-import { FILTER } from "../constants";
+import React from "react";
+import ListItem from "./ListItem";
+import "./List.css";
 
-function getFilteredTodos(filter, todos) {
-  switch (filter) {
-    case FILTER.SHOW_COMPLETED:
-      return todos.filter(item => item.done);
-    case FILTER.SHOW_PENDING:
-      return todos.filter(item => !item.done);
-    default:
-      return todos;
-  }
-}
-
-export default function() {
-  const [state, dispatch] = useContext(Context);
-  const filteredTodos = getFilteredTodos(state.filter, state.todos);
-
-  if (!filteredTodos.length) {
+export default function({ items, dispatch }) {
+  if (!items.length) {
     return <div className="list list--empty">No tasks</div>;
   }
   return (
     <div className="list">
-      {filteredTodos.map(item => (
+      {items.map(item => (
         <ListItem
           key={item.id}
           item={item}
