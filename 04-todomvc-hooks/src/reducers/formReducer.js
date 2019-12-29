@@ -3,12 +3,7 @@ import {
   ACTION_SET_FORM_ERROR
 } from "../actions/formActions";
 
-const initialState = {
-  input: "",
-  error: null
-};
-
-export default (state = initialState, action) => {
+export default function(state, action) {
   if (action.type === ACTION_INPUT_CHANGE) {
     return { input: action.input, error: null };
   }
@@ -16,4 +11,4 @@ export default (state = initialState, action) => {
     return { input: action.input, error: action.message };
   }
   return state;
-};
+}

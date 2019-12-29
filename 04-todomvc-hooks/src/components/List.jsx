@@ -1,38 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./List.css";
-import PropTypes from "prop-types";
 import ListItem from "./ListItem";
+import { clearTodos, completeTodos, toggleTodo } from "../actions/todoActions";
+import Context from "../store/context";
 
-const List = ({ todos, toggleTodo, clearTodos, completeTodos }) => {
-  if (!todos.length) {
+// function getFilteredTodos(filter, todos) {
+//   switch (filter) {
+//     case FILTER.SHOW_COMPLETED:
+//       return todos.filter(item => item.done);
+//     case FILTER.SHOW_PENDING:
+//       return todos.filter(item => !item.done);
+//     default:
+//       return todos;
+//   }
+// }
+
+export default function() {
+  const [state, dispatch] = useContext(Context);
+
+  if (!state.todos.length) {
     return <div className="list list--empty">No tasks</div>;
   }
   return (
     <div className="list">
-      {todos.map(item => (
-        <ListItem key={item.id} item={item} onClick={toggleTodo} />
+      {state.todos.map(item => (
+        <ListItem
+          key={item.id}
+          item={item}
+          onClick={() => dispatch(toggleTodo(item.id))}
+        />
       ))}
-      <button className="list-button" onClick={clearTodos}>
+      <button className="list-button" onClick={() => dispatch(clearTodos())}>
         Clear all
       </button>
-      <button className="list-button" onClick={completeTodos}>
+      <button className="list-button" onClick={() => dispatch(completeTodos())}>
         Complete all
       </button>
     </div>
   );
-};
-
-List.propTypes = {
-  todos: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      text: PropTypes.string,
-      done: PropTypes.bool
-    })
-  ),
-  toggleTodo: PropTypes.func.isRequired,
-  clearTodos: PropTypes.func.isRequired,
-  completeTodos: PropTypes.func.isRequired
-};
-
-export default List;
+}

@@ -1,15 +1,17 @@
 import React from "react";
-import FormContainer from "./containers/FormContainer";
-import Filters from "./components/Filters";
-import ListContainer from "./containers/ListContainer";
+import Form from "./components/Form";
+import List from "./components/List";
 import "./App.css";
+import Store from "./store/index"; // TODO: Why does this need index?
 
-const App = () => (
-  <div className="app">
-    <FormContainer />
-    <Filters />
-    <ListContainer />
-  </div>
-);
-
-export default App;
+export default function() {
+  return (
+    <div className="app">
+      <Store>
+        <Form />
+        {/*<Filters />*/}
+        <List />
+      </Store>
+    </div>
+  );
+}

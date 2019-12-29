@@ -6,7 +6,7 @@ const ListItem = ({ item, onClick }) => {
   return (
     <span
       className={"list-item" + (item.done ? " list-item--done" : "")}
-      onClick={() => onClick(item.id)}
+      onClick={onClick}
     >
       {item.text}
     </span>
