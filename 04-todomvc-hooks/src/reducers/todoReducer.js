@@ -8,15 +8,6 @@ import {
 
 // export
 
-function toggleTodo(todos, action) {
-  return todos.map(todo => {
-    if (todo.id === action.id) {
-      todo.done = !todo.done;
-    }
-    return todo;
-  });
-}
-
 function completeTodos(todos) {
   return todos.map(todo => {
     todo.done = true;
