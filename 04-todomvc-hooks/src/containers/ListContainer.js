@@ -15,8 +15,8 @@ function getFilteredTodos(filter, todos) {
 }
 
 export default function() {
-  const [state, dispatch] = useContext(Context);
-  const filteredTodos = getFilteredTodos(state.filter, state.todos);
+  const [{ filter, todos }, dispatch] = useContext(Context);
+  const filteredTodos = getFilteredTodos(filter, todos);
 
   return <List dispatch={dispatch} items={filteredTodos} />;
 }

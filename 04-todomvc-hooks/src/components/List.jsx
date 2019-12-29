@@ -6,8 +6,9 @@ import {
 import React from "react";
 import ListItem from "./ListItem";
 import "./List.css";
+import PropTypes from "prop-types";
 
-export default function({ items, dispatch }) {
+function List({ items, dispatch }) {
   if (!items.length) {
     return <div className="list list--empty">No tasks</div>;
   }
@@ -29,3 +30,16 @@ export default function({ items, dispatch }) {
     </div>
   );
 }
+
+List.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      text: PropTypes.string,
+      done: PropTypes.bool
+    })
+  ),
+  dispatch: PropTypes.func.isRequired
+};
+
+export default List;

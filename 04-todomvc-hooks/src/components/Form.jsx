@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Form.css";
 
-export default function({ input, error, handleSubmit, handleChangeInput }) {
+function Form({ input, error, handleSubmit, handleChangeInput }) {
   return (
     <form
       className={"form" + (error ? " form--has-error" : "")}
@@ -24,3 +25,12 @@ export default function({ input, error, handleSubmit, handleChangeInput }) {
     </form>
   );
 }
+
+Form.propTypes = {
+  input: PropTypes.string.isRequired,
+  error: PropTypes.string,
+  handleSubmit: PropTypes.func.isRequired,
+  handleChangeInput: PropTypes.func.isRequired
+};
+
+export default Form;

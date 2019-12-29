@@ -1,10 +1,20 @@
 import React from "react";
 import "./Filter.css";
+import PropTypes from "prop-types";
 
-export default function({ active, count, children, onClick }) {
+function Filter({ active, count, handleClick, children }) {
   return (
-    <button className="filter" onClick={onClick} disabled={active}>
+    <button className="filter" onClick={handleClick} disabled={active}>
       {children} ({count})
     </button>
   );
 }
+
+Filter.propTypes = {
+  active: PropTypes.bool.isRequired,
+  count: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  children: PropTypes.string.isRequired
+};
+
+export default Filter;

@@ -21,13 +21,13 @@ function handleChangeInput(event, dispatch) {
 }
 
 export default function() {
-  const [state, dispatch] = useContext(Context);
+  const [{ input, error, todos }, dispatch] = useContext(Context);
 
   return (
     <Form
-      input={state.input}
-      error={state.error}
-      handleSubmit={event => handleSubmit(event, state.todos, dispatch)}
+      input={input}
+      error={error}
+      handleSubmit={event => handleSubmit(event, todos, dispatch)}
       handleChangeInput={event => handleChangeInput(event, dispatch)}
     />
   );

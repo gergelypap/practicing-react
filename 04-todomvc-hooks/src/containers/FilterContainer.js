@@ -3,28 +3,34 @@ import Context from "../store/context";
 import { setFilter } from "../store/actions/filterActions";
 import { FILTER } from "../constants";
 import Filter from "../components/Filter";
+import PropTypes from "prop-types";
 
-function getCount(todos, filter) {
-  if (filter === FILTER.SHOW_ALL) {
+function getCount(todos, type) {
+  if (type === FILTER.SHOW_ALL) {
     return todos.length;
   }
   return todos.filter(todo =>
-    filter === FILTER.SHOW_COMPLETED ? todo.done : !todo.done
+    type === FILTER.SHOW_COMPLETED ? todo.done : !todo.done
   ).length;
 }
 
-export default ({ filter, children }) => {
-  const [state, dispatch] = useContext(Context);
-  const active = state.filter === filter;
-  const count = getCount(state.todos, filter);
+function FilterContainer({ type, children }) {
+  const [{ filter, todos }, dispatch] = useContext(Context);
 
   return (
     <Filter
-      active={active}
-      count={count}
-      onClick={() => dispatch(setFilter(filter))}
+      active={filter === type}
+      count={getCount(todos, type)}
+      handleClick={() => dispatch(setFilter(type))}
     >
       {children}
     </Filter>
   );
+}
+
+FilterContainer.propTypes = {
+  type: PropTypes.oneOf(Object.keys(FILTER)).isRequired,
+  children: PropTypes.string.isRequired
 };
+
+export default FilterContainer;
