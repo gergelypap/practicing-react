@@ -1,25 +1,24 @@
-import React from "react";
+import React, { memo } from "react";
 import "./ListItem.css";
 import PropTypes from "prop-types";
 
-function ListItem({ item, onClick }) {
+function ListItem({ text, done, onClick }) {
   return (
     <span
-      className={"list-item" + (item.done ? " list-item--done" : "")}
+      className={"list-item" + (done ? " list-item--done" : "")}
       onClick={onClick}
     >
-      {item.text}
+      {text}
     </span>
   );
 }
 
 ListItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.string,
-    text: PropTypes.string,
-    done: PropTypes.bool
-  }),
+  text: PropTypes.string.isRequired,
+  done: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired
 };
 
-export default ListItem;
+export default memo(ListItem, (prevProps, nextProps) => {
+  return prevProps.done === nextProps.done && prevProps.text === nextProps.text;
+});

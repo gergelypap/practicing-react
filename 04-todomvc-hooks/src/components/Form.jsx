@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import "./Form.css";
 
@@ -33,4 +33,8 @@ Form.propTypes = {
   handleChangeInput: PropTypes.func.isRequired
 };
 
-export default Form;
+export default memo(Form, (prevProps, nextProps) => {
+  return (
+    prevProps.input === nextProps.input && prevProps.error === nextProps.error
+  );
+});

@@ -3,7 +3,7 @@ import {
   completeTodos,
   toggleTodo
 } from "../store/actions/todoActions";
-import React from "react";
+import React, { memo } from "react";
 import ListItem from "./ListItem";
 import "./List.css";
 import PropTypes from "prop-types";
@@ -17,7 +17,8 @@ function List({ items, dispatch }) {
       {items.map(item => (
         <ListItem
           key={item.id}
-          item={item}
+          text={item.text}
+          done={item.done}
           onClick={() => dispatch(toggleTodo(item.id))}
         />
       ))}
@@ -42,4 +43,6 @@ List.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-export default List;
+export default memo(List, (prevProps, nextProps) => {
+  return prevProps.items === nextProps.items;
+});

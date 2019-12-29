@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import "./Filter.css";
 import PropTypes from "prop-types";
 
@@ -17,4 +17,8 @@ Filter.propTypes = {
   children: PropTypes.string.isRequired
 };
 
-export default Filter;
+export default memo(Filter, (prevProps, nextProps) => {
+  return (
+    prevProps.count === nextProps.count && prevProps.active === nextProps.active
+  );
+});
