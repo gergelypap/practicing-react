@@ -39,40 +39,19 @@ function completeTodos(todos) {
 export default function(state, action) {
   switch (action.type) {
     case ACTION_INPUT_CHANGE:
-      return {
-        ...state,
-        input: action.input
-      };
+      return { ...state, input: action.input };
     case ACTION_ADD_TODO:
-      return {
-        ...state,
-        todos: addTodo(state.todos, action.text)
-      };
+      return { ...state, todos: addTodo(state.todos, action.text) };
     case ACTION_SET_FORM_ERROR:
-      return {
-        ...state,
-        error: action.error
-      };
+      return { ...state, error: action.error };
     case ACTION_TOGGLE_TODO:
-      return {
-        ...state,
-        todos: toggleTodo(state.todos, action.id)
-      };
+      return { ...state, todos: toggleTodo(state.todos, action.id) };
     case ACTION_COMPLETE_ALL:
-      return {
-        ...state,
-        todos: completeTodos(state.todos)
-      };
+      return { ...state, todos: completeTodos(state.todos) };
     case ACTION_CLEAR_ALL:
-      return {
-        ...state,
-        todos: []
-      };
+      return { ...state, todos: [] };
     case ACTION_SET_FILTER:
-      return {
-        ...state,
-        filter: action.filter
-      };
+      return { ...state, filter: action.filter };
     default:
       return state;
   }
