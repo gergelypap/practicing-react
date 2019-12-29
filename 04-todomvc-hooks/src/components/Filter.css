@@ -1,0 +1,19 @@
+.filter {
+    color: gold;
+    background: none;
+    border: 0;
+    padding: .5em 1em;
+    font-size: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.filter:hover:not(:disabled) {
+    text-decoration: underline;
+}
+
+.filter:disabled {
+    color: inherit;
+    cursor: default;
+}

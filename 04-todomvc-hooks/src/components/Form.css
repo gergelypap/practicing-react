@@ -1,0 +1,54 @@
+:root {
+    --button-width: 100px;
+    --error-color: tomato;
+}
+
+.form {
+    position: relative;
+}
+
+.form--has-error .form-input {
+    color: var(--error-color);
+}
+
+.form-input {
+    padding: 1em;
+    border-radius: 2em 0 0 2em;
+    border: 0;
+    font-size: 1em;
+    width: calc(100% - var(--button-width));
+    font-family: inherit;
+}
+
+.form-error {
+    --height: 2em;
+    background: var(--error-color);
+    font-size: 80%;
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    height: var(--height);
+    bottom: calc(-1 * var(--height) - .5em);
+    line-height: var(--height);
+    padding: 0 var(--height);
+    border-radius: 2em;
+    color: black;
+    user-select: none;
+}
+
+.form-submit {
+    padding: 1em;
+    width: var(--button-width);
+    border-radius: 0 2em 2em 0;
+    font-size: 1em;
+    border: 0;
+    background: black;
+    color: white;
+    font-family: inherit;
+}
+
+.form-submit:disabled {
+    background: #222;
+    cursor: not-allowed;
+    color: #555;
+}

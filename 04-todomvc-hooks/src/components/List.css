@@ -1,0 +1,23 @@
+.list {
+    padding: 0 1em;
+}
+
+.list--empty {
+    font-style: italic;
+    margin-top: 1em;
+}
+
+.list-button {
+    background: none;
+    border: 0;
+    padding: 10px;
+    margin-left: -10px;
+    font-family: inherit;
+    font-size: 80%;
+    color: gold;
+    cursor: pointer;
+}
+
+.list-button:hover {
+    text-decoration: underline;
+}
