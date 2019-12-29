@@ -6,8 +6,7 @@ export const changeInput = input => ({
   input
 });
 
-export const setFormError = (input, message) => ({
+export const setFormError = error => ({
   type: ACTION_SET_FORM_ERROR,
-  input,
-  message
+  error
 });

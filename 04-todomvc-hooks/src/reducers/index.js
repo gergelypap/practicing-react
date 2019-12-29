@@ -1,11 +1,11 @@
-import { ACTION_INPUT_CHANGE } from "../actions/formActions";
+import {
+  ACTION_INPUT_CHANGE,
+  ACTION_SET_FORM_ERROR
+} from "../actions/formActions";
 import { ACTION_ADD_TODO } from "../actions/todoActions";
 import { v4 as uuid } from "node-uuid";
 
 function addTodo(todos, text) {
-  // if (todos.find(item => item.text === text) !== undefined) {
-  //   throw new Error("You already added this!");
-  // }
   const newTodo = {
     id: uuid(),
     done: false,
@@ -25,6 +25,11 @@ export default function(state, action) {
       return {
         ...state,
         todos: addTodo(state.todos, action.text)
+      };
+    case ACTION_SET_FORM_ERROR:
+      return {
+        ...state,
+        error: action.error
       };
     default:
       return state;

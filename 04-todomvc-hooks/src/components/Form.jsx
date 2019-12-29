@@ -2,28 +2,31 @@ import React, { useContext } from "react";
 import "./Form.css";
 import { addTodo } from "../actions/todoActions";
 import Context from "../store/context";
-import { changeInput } from "../actions/formActions";
+import { changeInput, setFormError } from "../actions/formActions";
 
 export default function() {
   const [state, dispatch] = useContext(Context);
 
-  function onSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     const input = event.target.elements.input.value;
-    dispatch(addTodo(input));
-    // try {
-    //   dispatch(addTodo(input));
-    // } catch (e) {
-    //   dispatch(setFormError(input, e.message));
-    //   return;
-    // }
-    dispatch(changeInput(""));
+    if (state.todos.find(item => item.text === input) === undefined) {
+      dispatch(addTodo(input));
+      dispatch(changeInput(""));
+    } else {
+      dispatch(setFormError("You already added this!"));
+    }
+  }
+
+  function handleChangeInput(event) {
+    dispatch(setFormError(null));
+    dispatch(changeInput(event.target.value));
   }
 
   return (
     <form
       className={"form" + (state.error ? " form--has-error" : "")}
-      onSubmit={event => onSubmit(event)}
+      onSubmit={handleSubmit}
     >
       <input
         type="text"
@@ -31,7 +34,7 @@ export default function() {
         value={state.input}
         className="form-input"
         placeholder={"What is your plan?"}
-        onChange={event => dispatch(changeInput(event.target.value))}
+        onChange={handleChangeInput}
         autoFocus={true}
         autoComplete="off"
       />
