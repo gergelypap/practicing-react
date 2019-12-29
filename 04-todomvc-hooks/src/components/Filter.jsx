@@ -1,26 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Filter.css";
-import PropTypes from "prop-types";
+import Context from "../store/context";
+import { setFilter } from "../actions/filterActions";
 import { FILTER } from "../constants";
 
-const Filter = ({ count, active, setFilter, children, filter }) => {
+function getCount(todos, filter) {
+  if (filter === FILTER.SHOW_ALL) {
+    return todos.length;
+  }
+  return todos.filter(todo =>
+    filter === FILTER.SHOW_COMPLETED ? todo.done : !todo.done
+  ).length;
+}
+
+export default ({ filter, children }) => {
+  const [state, dispatch] = useContext(Context);
+  const active = state.filter === filter;
+  const count = getCount(state.todos, filter);
+
   return (
     <button
       className="filter"
-      onClick={() => setFilter(filter)}
+      onClick={() => dispatch(setFilter(filter))}
       disabled={active}
     >
       {children} ({count})
     </button>
   );
 };
-
-Filter.propTypes = {
-  count: PropTypes.number.isRequired,
-  active: PropTypes.bool.isRequired,
-  setFilter: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
-  filter: PropTypes.oneOf(Object.keys(FILTER))
-};
-
-export default Filter;

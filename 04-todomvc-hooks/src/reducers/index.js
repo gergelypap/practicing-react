@@ -9,6 +9,7 @@ import {
   ACTION_TOGGLE_TODO
 } from "../actions/todoActions";
 import { v4 as uuid } from "node-uuid";
+import { ACTION_SET_FILTER } from "../actions/filterActions";
 
 function addTodo(todos, text) {
   const newTodo = {
@@ -66,6 +67,11 @@ export default function(state, action) {
       return {
         ...state,
         todos: []
+      };
+    case ACTION_SET_FILTER:
+      return {
+        ...state,
+        filter: action.filter
       };
     default:
       return state;
